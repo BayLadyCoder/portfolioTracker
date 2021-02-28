@@ -3,11 +3,22 @@ import AccountTable from "../AccountTable";
 import AllAccountsTable from "../AllAccountsTable";
 import { eTrade, weBull, accounts } from "../../database";
 import NavBar from "../NavBar";
+import AddNewAccountModal from "../AddNewAccountModal";
 
 const Home = () => {
+  const [open, setOpen] = React.useState(true);
+
+  const handleOpenNewAccModal = () => {
+    setOpen(true);
+  };
+
+  const handleCloseNewAccModal = () => {
+    setOpen(false);
+  };
+
   return (
     <div style={styles.container}>
-      <NavBar />
+      <NavBar handleOpenNewAccModal={handleOpenNewAccModal} />
       <div style={styles.accountContainer}>
         <h2 style={styles.tableHeadPrimary}>All Accounts</h2>
         <AllAccountsTable accounts={accounts} />
@@ -20,6 +31,10 @@ const Home = () => {
         <h2 style={styles.tableHeadSecondary}>Webull</h2>
         <AccountTable account={weBull} />
       </div>
+      <AddNewAccountModal
+        open={open}
+        handleCloseNewAccModal={handleCloseNewAccModal}
+      />
     </div>
   );
 };

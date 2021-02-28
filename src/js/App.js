@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./components/Home";
 
 const App = () => {
+  // test
   return (
     <div style={styles.container}>
       <Home />
